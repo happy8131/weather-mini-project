@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import WeatherSearch from './search/page';
 
-interface CurrentWeahter {
+export interface CurrentWeahter {
     main: {
         feels_like: number;
         temp: number;
@@ -20,7 +20,7 @@ interface CurrentWeahter {
     name: string;
 }
 
-interface HourWeahter {
+export interface HourWeahter {
     dt_txt: string;
     dt: number;
     weather: { icon: string }[];
@@ -39,8 +39,8 @@ interface HourWeahter {
 
 export default function GeoClient() {
     const { latitude, longitude, loading, error } = useGeolocation();
-    const [currWeather, setCurrWeather] = useState<CurrentWeahter>();
-    const [hourWeather, setHourWeather] = useState<HourWeahter[]>();
+    const [currWeather, setCurrWeather] = useState<CurrentWeahter | null>(null);
+    const [hourWeather, setHourWeather] = useState<HourWeahter[] | null>([]);
     const [bWeather, setbWeather] = useState(true);
 
     //오늘 날짜

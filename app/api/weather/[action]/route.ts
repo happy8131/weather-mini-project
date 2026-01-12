@@ -19,17 +19,9 @@ export async function GET(request: NextRequest, { params }: RouteParams) {
     const lat = searchParams.get('lat');
     const lon = searchParams.get('lon');
 
-    const address = '수원시';
+    const address = searchParams.get('query');
+
     if (action === 'current') {
-        // const geoRes = await fetch(
-        //     `${KAKAO_URL}?query=${encodeURIComponent(address)}`,
-        //     {
-        //         headers: {
-        //             Authorization: `KakaoAK ${process.env.KAKAO_REST_API_KEY}`,
-        //         },
-        //         cache: 'no-store',
-        //     }
-        // );
         //현재 url
         const url = `${BASE_URL}?lat=${lat}&lon=${lon}&appid=${process.env.DATA_WEATHER_KEY}&units=metric&lang=kr`;
 
@@ -45,5 +37,21 @@ export async function GET(request: NextRequest, { params }: RouteParams) {
         const data = await res.json();
 
         return NextResponse.json(data?.list);
+    } else if (action === 'search') {
+        //검색 좌표 얻기
+        const res = await fetch(
+            `${KAKAO_URL}?query=${encodeURIComponent(address as string)}`,
+            {
+                headers: {
+                    Authorization: `KakaoAK ${process.env.KAKAO_REST_API_KEY}`,
+                },
+                cache: 'no-store',
+            }
+        );
+
+        const text = await res.text();
+        const result = JSON.parse(text);
+
+        return NextResponse.json(result);
     }
 }
