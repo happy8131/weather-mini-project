@@ -1,9 +1,9 @@
-import GeoClient from '@/compoments/page';
+import Weather from '@/compoments/weather/page';
 
 export default async function Home() {
     return (
         <div>
-            <GeoClient />
+            <Weather />
         </div>
     );
 }

@@ -1,15 +1,13 @@
 'use client';
 
 import { useGeolocation } from '@/hook/useLocationHook';
-import { useRouter } from 'next/navigation';
-
 import { useEffect, useState } from 'react';
-import WeatherSearch from './search/search';
+import WeatherSearch from '../search/search';
 import { useQuery } from '@tanstack/react-query';
 import { HourWeatherFetcher, WeatherFetcher } from '@/lib/weatherUntil';
 import { useFavorites } from '@/app/utils/favoritesProvider';
-import FavoriteButton from './favorites/FavoriteButton';
-import FavoritesLinkButton from './favorites/favoritesLink';
+import FavoritesLinkButton from '../favorites/favoritesLink';
+import FavoriteButton from '../favorites/FavoriteButton';
 
 export interface CurrentWeahter {
     main: {
@@ -42,7 +40,7 @@ export interface HourWeahter {
     name: string;
 }
 
-export default function GeoClient() {
+export default function Weather() {
     const { latitude, longitude } = useGeolocation();
     const [coord, setCoord] = useState<{
         lat: number;
@@ -63,15 +61,8 @@ export default function GeoClient() {
         enabled: !!coord,
     });
 
-    // const [currWeather, setCurrWeather] = useState<CurrentWeahter | null>(null);
-    //  const [hourWeather, setHourWeather] = useState<HourWeahter[] | null>([]);
-    //  const [bWeather, setbWeather] = useState(true);
-
-    //오늘 날짜
-    const today = new Date().toLocaleDateString('sv-SE', {
-        timeZone: 'Asia/Seoul',
-    });
     const { favorites, addFavorite, removeFavorite } = useFavorites();
+
     const isFavorite = favorites.some(
         (f) => f.lat === coord?.lat && f.lon === coord?.lon
     );
@@ -84,37 +75,6 @@ export default function GeoClient() {
             });
         }
     }, [latitude, longitude]);
-
-    // useEffect(() => {
-    //     //현재위치 api
-    //     const WeatherData = async () => {
-    //         const res = await fetch(
-    //             `/api/weather/current?lat=${latitude}&lon=${longitude}`
-    //         );
-    //         const result = await res.json();
-    //         setCurrWeather(result);
-    //     };
-    //     //시간대 별 api
-    //     const HourWeatherData = async () => {
-    //         const res = await fetch(
-    //             `/api/weather/hour?lat=${latitude}&lon=${longitude}`
-    //         );
-    //         const result = await res.json();
-    //         setHourWeather(result);
-    //     };
-    //     if (bWeather === !loading) {
-    //         WeatherData();
-    //         HourWeatherData();
-    //         setbWeather(false);
-    //     }
-    // }, [latitude, longitude]);
-
-    // if (isLoading)
-    //     return (
-    //         <div className="min-h-screen bg-linear-to-b from-sky-100 to-blue-200 flex items-center justify-center px-4">
-    //             <p>데이터 불러오는 중...</p>
-    //         </div>
-    //     );
 
     return (
         <div className="min-h-screen bg-linear-to-b from-sky-100 to-blue-200 flex items-center justify-center px-4">
@@ -192,26 +152,31 @@ export default function GeoClient() {
                     <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-hide">
                         {hourWeather
                             ?.filter(
-                                (item: { dt_txt: string }) =>
-                                    item.dt_txt.slice(0, 10) === today
+                                (item: HourWeahter) =>
+                                    item.dt * 1000 >
+                                    Date.now() -
+                                        new Date().getTimezoneOffset() *
+                                            60 *
+                                            1000
                             )
+                            .slice(0, 8)
                             .map((item: HourWeahter) => (
                                 <div
                                     key={item.dt}
                                     className="min-w-18 shrink-0 rounded-xl bg-white/70 backdrop-blur shadow-sm p-3 flex flex-col items-center"
                                 >
                                     <span className="text-xs text-gray-500 mb-1">
-                                        {item?.dt_txt?.slice(11, 16)}
+                                        {item.dt_txt.slice(11, 16)}
                                     </span>
 
                                     <img
-                                        src={`https://openweathermap.org/img/wn/${item.weather[0]?.icon}@2x.png`}
+                                        src={`https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`}
                                         alt=""
                                         className="w-8 h-8"
                                     />
 
                                     <span className="text-sm font-semibold text-gray-800 mt-1">
-                                        {item.main?.temp}°
+                                        {item.main.temp}°
                                     </span>
                                 </div>
                             ))}

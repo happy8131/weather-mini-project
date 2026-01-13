@@ -20,6 +20,7 @@ const FavoritesContext = createContext<{
 export function FavoritesProvider({ children }: { children: React.ReactNode }) {
     const [favorites, setFavorites] = useState<FavoritePlace[]>([]);
 
+    //새로고침해도 유지
     useEffect(() => {
         const saved = localStorage.getItem('favorites');
         if (saved) setFavorites(JSON.parse(saved));

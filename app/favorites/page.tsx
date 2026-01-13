@@ -4,7 +4,7 @@ import FavoriteCard from '@/compoments/favorites/favoriteCard';
 import { useFavorites } from '../utils/favoritesProvider';
 
 export default function FavoritesPage() {
-    const { favorites, removeFavorite } = useFavorites();
+    const { favorites, removeFavorite, updateAlias } = useFavorites();
 
     if (!favorites.length) {
         return <p className="text-center mt-10">즐겨찾기가 없습니다.</p>;
@@ -17,6 +17,7 @@ export default function FavoritesPage() {
                     key={place.id}
                     place={place}
                     onRemove={removeFavorite}
+                    onUpdateAlias={updateAlias}
                 />
             ))}
         </div>
