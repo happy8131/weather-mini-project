@@ -23,7 +23,7 @@ export async function GET(request: NextRequest, { params }: RouteParams) {
 
     if (action === 'current') {
         //현재 url
-        console.log('curr');
+
         const url = `${BASE_URL}?lat=${lat}&lon=${lon}&appid=${process.env.DATA_WEATHER_KEY}&units=metric&lang=kr`;
 
         const res = await fetch(url, { cache: 'no-store' });

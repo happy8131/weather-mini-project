@@ -1,14 +1,9 @@
 'use client';
 
 import { useState } from 'react';
-import { CurrentWeahter, HourWeahter } from '../page';
 import districts from '@/data/korea_districts.json';
-import { useQuery } from '@tanstack/react-query';
-import { HourWeatherFetcher, WeatherFetcher } from '@/lib/weatherUntil';
+
 interface PagenationBtnType {
-    //  slideIndex: number;
-    // setCurrWeather: React.Dispatch<React.SetStateAction<CurrentWeahter | null>>;
-    //  setHourWeather: React.Dispatch<React.SetStateAction<HourWeahter[] | null>>;
     setCoord: React.Dispatch<
         React.SetStateAction<{ lat: number; lon: number } | null>
     >;
@@ -17,10 +12,6 @@ interface PagenationBtnType {
 export default function WeatherSearch({ setCoord }: PagenationBtnType) {
     const [results, setResults] = useState<string[]>([]);
     const [keyword, setKeyword] = useState('');
-    // const [searchCoord, setSearchCoord] = useState<{
-    //     lat: number;
-    //     lon: number;
-    // } | null>(null);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
@@ -47,23 +38,12 @@ export default function WeatherSearch({ setCoord }: PagenationBtnType) {
             const res = await fetch(`/api/weather/search?query=${keyword}`);
             const result = await res.json();
             if (result.documents.length) {
-                // const resCurr = await fetch(
-                //     `/api/weather/current?lat=${result.documents[0].y}&lon=${result.documents[0].x}`
-                // );
-                // const resHour = await fetch(
-                //     `/api/weather/hour?lat=${result.documents[0].y}&lon=${result.documents[0].x}`
-                // );
-                // const resultCurr = await resCurr.json();
-                // const resultHour = await resHour.json();
                 const { y, x } = result.documents[0]; // y=lat, x=lon
 
                 setCoord({
                     lat: Number(y),
                     lon: Number(x),
                 });
-
-                //    setCurrWeather(resultCurr);
-                //    setHourWeather(resultHour);
             } else {
                 alert('해당 장소의 정보가 제공되지 않습니다.');
             }
