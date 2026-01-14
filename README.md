@@ -18,6 +18,6 @@ React, Typescript, Tanstack Query, useContext, Tailwind
 
 ## Deploy on Vercel
 
-https://weather-project-dlfwnd5532-4247-pros-projects-0d84d01c.vercel.app/
+https://weather-project-dun-iota.vercel.app/
 
 /////_////날씨 조회 화면에 현재 날씨 기준으로 왼쪽에는 즐겨찾가페이지로 갈 수 있고 오른쪽에 별표는 한번 누르면 노란색으로 바뀌면 즐겨찾기에 추가 되고 다시 누르게 되면 빈 별표가 표시가 됩니다.\_ (사용 참고 부탁드립니다.)_////////////
