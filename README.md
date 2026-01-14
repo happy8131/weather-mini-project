@@ -1,36 +1,23 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+프로젝트 실행 방법 npm install 설치후 npm run dev로 실행하시면 됩니다.
+(env파일에 Key는 이메일로 보내드렸습니다.)
 
-## Getting Started
+구현한 기능과 기술 스택은
+과제에서 구현 기능으로 제시한
+Open API, Geolocation API로 통해 현재위치 날씨정보를 가져오고 현재 기온과 당일의 최저, 최고 기온 그리고 시간대 별 기온을 구현했습니다.
+그리고 검색 기능은 키워드로 입력하여 카카오 로컬 API로 통해 좌표를 가져와서 그 장소의 날씨 정보를 조회했습니다.
+행정구역 해당문서 JSON파일로 검색어 입력 시 매칭되는 장소 리스트로 표시하고 선택 할 수 있게도 구현했습니다.
 
-First, run the development server:
+그리고 즐겨찾기에 추가 및 삭제 그리고 별칭 수정 작업도 구현했습니다.
+즐겨찾기페이지에서 카드UI 선택시 상세페이지 들어가서 2-1에 명시된 날씨 정보 모두를 표시했습니다.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+API요청에는 요청하신 Tanstack Query문을 사용했고 전역적으로 공유해야하는 즐겨찾기추가, 삭제, 별칭 수정등 페이지 경로가 다를때 useContext를 사용했습니다.
+그리고 css는 Tailwind라이브러리를 사용했습니다
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+사용한 기술 스택
+React, Typescript, Tanstack Query, useContext, Tailwind
 
 ## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+https://weather-project-dlfwnd5532-4247-pros-projects-0d84d01c.vercel.app/
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+/////_////날씨 조회 화면에 현재 날씨 기준으로 왼쪽에는 즐겨찾가페이지로 갈 수 있고 오른쪽에 별표는 한번 누르면 노란색으로 바뀌면 즐겨찾기에 추가 되고 다시 누르게 되면 빈 별표가 표시가 됩니다.\_ (사용 참고 부탁드립니다.)_////////////
