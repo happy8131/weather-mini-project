@@ -59,7 +59,7 @@ export default function WeatherSearch({ setCoord }: PagenationBtnType) {
                     value={keyword}
                     onChange={handleChange}
                     type="text"
-                    placeholder="지역 검색 (예: 수원, 서울)"
+                    placeholder="지역 검색"
                     className="flex-1 rounded-xl border border-gray-200 bg-white/70 px-4 py-2 text-sm outline-none focus:border-sky-400 focus:ring-2 focus:ring-sky-200"
                 />
                 <button

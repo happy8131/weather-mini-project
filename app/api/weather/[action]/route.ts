@@ -8,11 +8,10 @@ interface Params {
     action: string;
 }
 
-interface RouteParams {
-    params: Params;
-}
-
-export async function GET(request: NextRequest, { params }: RouteParams) {
+export async function GET(
+    request: NextRequest,
+    { params }: { params: Promise<{ action: string }> }
+) {
     const paramObj = await params;
     const { action } = paramObj;
     const { searchParams } = new URL(request.url);
