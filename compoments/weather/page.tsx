@@ -46,11 +46,7 @@ export default function Weather() {
         lat: number;
         lon: number;
     } | null>(null);
-    const {
-        data: currWeather,
-        error: currErr,
-        isLoading,
-    } = useQuery({
+    const { data: currWeather, error: currErr } = useQuery({
         queryKey: ['current', coord?.lat, coord?.lon],
         queryFn: () => WeatherFetcher(coord!.lat, coord!.lon),
         enabled: !!coord,
