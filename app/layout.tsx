@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Script from 'next/script';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import Providers from './utils/providers';
@@ -30,6 +31,12 @@ export default function RootLayout({
                 suppressHydrationWarning
                 className={`${geistSans.variable} ${geistMono.variable} antialiased`}
             >
+                {/* Google AdSense 확인용 스크립트 - 모든 페이지에서 로드 */}
+                <Script
+                    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7246383169537696"
+                    strategy="afterInteractive"
+                    crossOrigin="anonymous"
+                />
                 <Providers>
                     <FavoritesProvider>{children}</FavoritesProvider>
                 </Providers>
