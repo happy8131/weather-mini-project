@@ -26,6 +26,10 @@ export const metadata: Metadata = {
         description: '현재 위치와 전국 지역의 실시간 날씨 정보를 확인하세요.',
         type: 'website',
     },
+    // Google Search Console 사이트 소유권 확인
+    verification: {
+        google: 'Z5SGOJdFcxHqAwC7_mM_qw7GRxRdfQmGytnI5IAcmpg',
+    },
     // Google AdSense 계정 확인용 메타 태그
     other: {
         'google-adsense-account': 'ca-pub-7246383169537696',
