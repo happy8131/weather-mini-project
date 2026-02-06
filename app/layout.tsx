@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
-import Script from 'next/script';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import Providers from './utils/providers';
 import { FavoritesProvider } from './utils/favoritesProvider';
+import AdSenseScript from './utils/AdSenseScript';
 
 const geistSans = Geist({
     variable: '--font-geist-sans',
@@ -31,12 +31,8 @@ export default function RootLayout({
                 suppressHydrationWarning
                 className={`${geistSans.variable} ${geistMono.variable} antialiased`}
             >
-                {/* Google AdSense 확인용 스크립트 - 모든 페이지에서 로드 */}
-                <Script
-                    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7246383169537696"
-                    strategy="afterInteractive"
-                    crossOrigin="anonymous"
-                />
+                {/* Google AdSense - data-nscript 미지원으로 일반 script 주입 사용 */}
+                <AdSenseScript />
                 <Providers>
                     <FavoritesProvider>{children}</FavoritesProvider>
                 </Providers>
