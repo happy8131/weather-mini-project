@@ -31,8 +31,10 @@ export const metadata: Metadata = {
         google: 'Z5SGOJdFcxHqAwC7_mM_qw7GRxRdfQmGytnI5IAcmpg',
     },
     // Google AdSense 계정 확인용 메타 태그
+    // 네이버 서치어드바이저 사이트 소유권 확인
     other: {
         'google-adsense-account': 'ca-pub-7246383169537696',
+        'naver-site-verification': '335dfb074090473e2bbefe6d946579d61fe695bc',
     },
 };
 
