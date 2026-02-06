@@ -47,8 +47,10 @@ export default function RootLayout({
                 <AdSenseScript />
                 <Providers>
                     <FavoritesProvider>
-                        {children}
-                        <Footer />
+                        <div className="flex min-h-screen flex-col">
+                            <main className="flex-1">{children}</main>
+                            <Footer />
+                        </div>
                     </FavoritesProvider>
                 </Providers>
             </body>
