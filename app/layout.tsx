@@ -1,10 +1,10 @@
 import type { Metadata } from 'next';
+import Script from 'next/script';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import Providers from './utils/providers';
 import { FavoritesProvider } from './utils/favoritesProvider';
 import AdSenseScript from './utils/AdSenseScript';
-import GoogleAnalytics from './utils/GoogleAnalytics';
 import Footer from '@/compoments/common/Footer';
 
 const geistSans = Geist({
@@ -52,8 +52,19 @@ export default function RootLayout({
             >
                 {/* Google AdSense - data-nscript 미지원으로 일반 script 주입 사용 */}
                 <AdSenseScript />
-                {/* Google Analytics 4 - 측정 ID G-8WMPR3K71L */}
-                <GoogleAnalytics />
+                {/* Google tag (gtag.js) - 공식 스니펫 */}
+                <Script
+                    src="https://www.googletagmanager.com/gtag/js?id=G-8WMPR3K71L"
+                    strategy="afterInteractive"
+                />
+                <Script id="gtag-config" strategy="afterInteractive">
+                    {`
+                        window.dataLayer = window.dataLayer || [];
+                        function gtag(){dataLayer.push(arguments);}
+                        gtag('js', new Date());
+                        gtag('config', 'G-8WMPR3K71L');
+                    `}
+                </Script>
                 <Providers>
                     <FavoritesProvider>
                         <div className="flex min-h-screen flex-col">
