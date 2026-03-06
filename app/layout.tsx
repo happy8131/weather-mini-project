@@ -4,7 +4,6 @@ import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import Providers from './utils/providers';
 import { FavoritesProvider } from './utils/favoritesProvider';
-import AdSenseScript from './utils/AdSenseScript';
 import Footer from '@/compoments/common/Footer';
 
 const geistSans = Geist({
@@ -46,12 +45,18 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="ko" suppressHydrationWarning>
+            <head>
+                {/* AdSense: 심사용으로 head 내 서버 렌더 스크립트 (코드 구현 가이드 준수) */}
+                <script
+                    async
+                    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7246383169537696"
+                    crossOrigin="anonymous"
+                />
+            </head>
             <body
                 suppressHydrationWarning
                 className={`${geistSans.variable} ${geistMono.variable} antialiased`}
             >
-                {/* Google AdSense - data-nscript 미지원으로 일반 script 주입 사용 */}
-                <AdSenseScript />
                 {/* Google tag (gtag.js) - 공식 스니펫 */}
                 <Script
                     src="https://www.googletagmanager.com/gtag/js?id=G-8WMPR3K71L"
