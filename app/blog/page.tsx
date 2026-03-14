@@ -8,12 +8,12 @@ export const metadata: Metadata = {
 
 const posts = [
     { slug: 'daily-outfit-by-temperature', title: '기온별 옷차림 가이드: 매일 아침 뭘 입을지 고민될 때', date: '2026-01-15', summary: '기온 구간별로 추천하는 옷차림을 정리했습니다. 아침마다 날씨 앱을 보고도 뭘 입어야 할지 모르겠다면 이 글을 참고하세요.' },
-    { slug: 'rainy-day-ستعداد', title: '비 오는 날 외출 준비 체크리스트', date: '2026-01-20', summary: '갑작스러운 비에 당황하지 않도록, 비 오는 날 꼭 챙겨야 할 준비물과 생활 팁을 정리했습니다.' },
+    { slug: 'rainy-day-checklist', title: '비 오는 날 외출 준비 체크리스트', date: '2026-01-20', summary: '갑작스러운 비에 당황하지 않도록, 비 오는 날 꼭 챙겨야 할 준비물과 생활 팁을 정리했습니다.' },
     { slug: 'humidity-and-health', title: '습도가 건강에 미치는 영향과 관리 방법', date: '2026-01-25', summary: '습도에 따라 피부, 호흡기, 수면 질이 달라집니다. 적정 습도를 유지하는 방법을 알아봅니다.' },
     { slug: 'wind-chill-explained', title: '체감 온도란? 바람이 부는 날 더 춥게 느껴지는 이유', date: '2026-02-01', summary: '실제 기온과 체감 온도가 다른 이유, 체감 온도 계산 원리와 대처법을 설명합니다.' },
     { slug: 'seasonal-health-tips', title: '계절별 건강 관리: 봄·여름·가을·겨울 맞춤 생활법', date: '2026-02-05', summary: '각 계절의 특성에 맞는 건강 관리법과 주의사항을 정리했습니다.' },
     { slug: 'weather-and-exercise', title: '날씨에 따른 운동 가이드: 언제 어떤 운동이 좋을까?', date: '2026-02-10', summary: '기온·습도·풍속에 따라 적합한 운동 종류와 시간대를 추천합니다.' },
-    { slug: 'fine-dust-ستعداد', title: '미세먼지 나쁨일 때 실내에서 할 수 있는 것들', date: '2026-02-15', summary: '미세먼지 농도가 높은 날, 실내에서 건강하게 보내는 방법과 공기 질 관리 팁을 안내합니다.' },
+    { slug: 'fine-dust-indoor-tips', title: '미세먼지 나쁨일 때 실내에서 할 수 있는 것들', date: '2026-02-15', summary: '미세먼지 농도가 높은 날, 실내에서 건강하게 보내는 방법과 공기 질 관리 팁을 안내합니다.' },
 ];
 
 export default function BlogPage() {
