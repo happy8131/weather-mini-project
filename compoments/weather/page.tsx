@@ -178,6 +178,19 @@ export default function Weather() {
                             ))}
                     </div>
                 </div>
+
+                {/* 날씨 활용 안내 텍스트 */}
+                <div className="mt-6 pt-4 border-t border-gray-200">
+                    <p className="text-xs text-gray-500 leading-relaxed mb-2">
+                        현재 위치의 실시간 날씨 데이터를 OpenWeatherMap에서 받아 보여드립니다.
+                        검색창에 지역명을 입력하면 전국 어디든 날씨를 확인할 수 있고,
+                        자주 확인하는 지역은 별 아이콘으로 즐겨찾기에 추가하세요.
+                    </p>
+                    <p className="text-xs text-gray-500 leading-relaxed">
+                        체감 온도는 바람과 습도를 반영하여 실제 느끼는 온도를 나타냅니다.
+                        시간대별 예보를 참고하면 외출·운동·세탁 등 하루 계획에 도움이 됩니다.
+                    </p>
+                </div>
             </div>
         </div>
     );
