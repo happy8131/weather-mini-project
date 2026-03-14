@@ -30,6 +30,11 @@ export default function Footer() {
                                     날씨 팁
                                 </Link>
                             </li>
+                            <li>
+                                <Link href="/blog" className="hover:text-blue-300 transition-colors">
+                                    블로그
+                                </Link>
+                            </li>
                         </ul>
                     </div>
                     <div>
